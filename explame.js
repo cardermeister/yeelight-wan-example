@@ -1,5 +1,5 @@
 const Telnet = require('telnet-rxjs').Telnet;
-const yeelight_telnet = Telnet.client('forwarded_ip:forwarded_port');
+const yeelight_telnet = Telnet.client('your_ip:forwarded_port'); //55443
 yeelight_telnet.connect();
 
 yeelight_telnet.sendln('{"id":0,"method":"toggle","params":[]}');
