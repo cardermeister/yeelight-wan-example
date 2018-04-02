@@ -1,9 +1,14 @@
-const Telnet = require('telnet-rxjs').Telnet;
-const yeelight_telnet = Telnet.client('your_ip:forwarded_port'); //55443
-yeelight_telnet.connect();
+const net = require('net');
 
-yeelight_telnet.sendln('{"id":0,"method":"toggle","params":[]}');
+const client = net.createConnection({host: "your_ip", port: 55443}, () => {
+	client.write('{"id":0,"method":"toggle","params":[]}\r\n');
+});
 
-yeelight_telnet.data.subscribe((data) => {
-	console.log(data.replace(/(\r\n|\n|\r)/gm," "))
+client.once('data', (data) => {
+	console.log(data.toString());
+	client.end();
+});
+
+client.on('end', () => {
+	console.log('disconnected from server');
 });
