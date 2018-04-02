@@ -1,4 +1,4 @@
-# yeelight-wan-explame
+# yeelight-wan-example
 Connect from outside of local network
 
 Commands: https://www.yeelight.com/download/Yeelight_Inter-Operation_Spec.pdf (8 page)
